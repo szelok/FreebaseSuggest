@@ -44,6 +44,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class FreebaseSuggestExampleActivity extends Activity {
+	private static final String TAG = "FreebaseSuggestExampleActivity";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +64,8 @@ public class FreebaseSuggestExampleActivity extends Activity {
 				 * */
 				HashMap<String, String> hm = (HashMap<String, String>) arg0
 						.getAdapter().getItem(position);
-
+				
+				Log.i(TAG, "id: " + hm.get("mid"));
 				(new FreebaseGetTask()).execute(hm.get("mid"));
 			}
 		};
@@ -196,9 +199,9 @@ public class FreebaseSuggestExampleActivity extends Activity {
 						JSONArray values = property.getJSONArray("values");
 						if (values.length() > 0) {
 							JSONObject value = ((JSONObject) values.get(0));
-							if (value.has("text")) {
+							if (value.has("value")) {
 								result.put("description",
-										value.getString("text"));
+										value.getString("value"));
 							}
 						}
 					}

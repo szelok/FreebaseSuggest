@@ -45,6 +45,7 @@ public class FreebaseSuggestTextView extends AutoCompleteTextView {
 				new ArrayList<Map<String, String>>(),
 				R.layout.autocomplete_layout, from, to));
 		setThreshold(3);
+		setHint(R.string.hint);
 	}
 
 	@Override
@@ -178,7 +179,7 @@ public class FreebaseSuggestTextView extends AutoCompleteTextView {
 			} catch (JSONException e) {
 				Log.e(TAG, "Cannot process JSON results", e);
 			}
-
+			
 			return results;
 		}
 
